@@ -37,7 +37,7 @@ const CardData = ({ toggle }) => {
                     {cart.length} Item <IoMdArrowDropup className="cursor-pointer" />
                 </small>
                 <h4 >
-                    ${cart.reduce((acc, curVal) => acc + curVal.totalPrice, 0)}{" "}
+                    ₹ {cart.reduce((acc, curVal) => acc + curVal.totalPrice, 0)}{" "}
                     <sub>(plus tax)</sub>
                 </h4>
             </div>

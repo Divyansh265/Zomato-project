@@ -16,9 +16,9 @@ const FloatMenuBtn = (props) => {
                     ))}
                 </div>
             )}
-            {/* <button onClick={toggleMenu} className=" text-white rounded-md flex items-center gap-2 bg-red-500 px-3 py-1 ">
+            <button onClick={toggleMenu} className=" text-white rounded-md flex items-center gap-2 bg-red-500 px-3 py-1 ">
                 {isClicked ? <MdClose /> : <HiMenu />}Menu
-            </button> */}
+            </button>
         </div>
     )
 }

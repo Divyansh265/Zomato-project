@@ -6,11 +6,11 @@ const RestaurantInfo = (props) => {
             <h1 className='text-3xl font-bold'>{props.name}</h1>
             <div className='flex items-center gap-6 text-xs md:text-base'>
                 <div className='flex items-center gap-2'>
-                    <span className='flex rounded items-center gap-1 text-white font-medium bg-green-600 px-2 py-1'>
+                    <span className='flex rounded items-center gap-1 text-white font-medium bg-green-900 px-2 py-1'>
                         {props.restaurantRating}<TiStarFullOutline />
                     </span>
                     <span>
-                        <strong>100</strong>
+                        <strong>4,005</strong>
                         <p className='border-dashed border-b border-gray-500'>
                             Dining Review
                         </p>
@@ -21,7 +21,7 @@ const RestaurantInfo = (props) => {
                         {props.deliveryRating}<TiStarFullOutline />
                     </span>
                     <span>
-                        <strong>100</strong>
+                        <strong>7,963</strong>
                         <p className='border-dashed border-b border-gray-500'>
                             Delivery Review
                         </p>
