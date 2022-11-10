@@ -3,10 +3,15 @@ import { FaUserAlt } from 'react-icons/fa'
 import { HiLocationMarker } from 'react-icons/hi'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { RiSearch2Line } from "react-icons/ri"
+import { useNavigate } from "react-router-dom"
 
 //Component
 import SignUp from '../auth/Signup'
 import SignIn from '../auth/Signin'
+//redux
+import { useSelector, useDispatch } from 'react-redux'
+import { signOut } from '../../redux/reducers/auth/auth.actions'
+import { clearUser } from '../../redux/reducers/user/user.action'
 const MobileNav = ({ user, isDropdownOpen, setIsDropdownOpen, signIn, signUp }) => {
     const SignIn = () => {
         signIn()
@@ -16,6 +21,16 @@ const MobileNav = ({ user, isDropdownOpen, setIsDropdownOpen, signIn, signUp }) 
         signUp()
 
         setIsDropdownOpen(false)
+    }
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const SignOut = () => {
+        dispatch(signOut())
+        dispatch(clearUser())
+        navigate("/delivery")
+        setIsDropdownOpen(false)
+
     }
     return (
         <div className='flex w-full items-center justify-between lg:hidden ' >
@@ -41,7 +56,7 @@ const MobileNav = ({ user, isDropdownOpen, setIsDropdownOpen, signIn, signUp }) 
                     </div>
                     {isDropdownOpen && (
                         <div className='absolute  shadow-lg py-3 -bottom-14  w-36 z-20 flex flex-col gap-2 bg-white border border-gray-200'>
-                            <button>Sign Out</button>
+                            <button onClick={SignOut}>Sign Out</button>
                         </div>
                     )}
                 </>) : (<>
@@ -71,6 +86,14 @@ const LargeNav = ({ user, isDropdownOpen, setIsDropdownOpen, signIn, signUp }) =
     const SignUp = () => {
         signUp()
 
+        setIsDropdownOpen(false)
+    }
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const SignOut = () => {
+        dispatch(signOut())
+        dispatch(clearUser())
+        navigate("/delivery")
         setIsDropdownOpen(false)
     }
 
@@ -118,7 +141,7 @@ const LargeNav = ({ user, isDropdownOpen, setIsDropdownOpen, signIn, signUp }) =
                 </div>
                 {isDropdownOpen && (
                     <div className='absolute shadow-lg py-3 -bottom-14  -right-0 w-36 z-20 flex flex-col gap-2 bg-white border border-gray-200'>
-                        <button>Sign Out</button>
+                        <button onClick={SignOut}>Sign Out</button>
                     </div>
                 )}
             </>) : (<>
@@ -146,9 +169,10 @@ const Navbar = () => {
     const openSignInModel = () => setOpenSignIn(true)
     const openSignUpModel = () => setOpenSignUp(true)
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-    const user = {
-        // fullName: "Divyansh",
-    }
+    // const user = {
+    //     // fullName: "Divyansh",
+    // }
+    const user = useSelector((globalState) => globalState.user)
     return (
         <>
             <SignIn isOpen={openSignIn} setIsOpen={setOpenSignIn} />

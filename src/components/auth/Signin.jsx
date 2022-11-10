@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc"
 
 import { useDispatch } from "react-redux"
 import { signIn } from '../../redux/reducers/auth/auth.actions'
+import { getMySelf } from "../../redux/reducers/user/user.action"
 const Signin = ({ isOpen, setIsOpen }) => {
     const [userData, setUserData] = useState({
         email: "",
@@ -19,12 +20,13 @@ const Signin = ({ isOpen, setIsOpen }) => {
         setIsOpen(false)
     }
     const dispatch = useDispatch()
-    const submit = () => {
-        dispatch(signIn(userData))
+    const submit = async () => {
+        await dispatch(signIn(userData))
+        await dispatch(getMySelf())
         closeModal()
         setUserData({ email: "", password: "" })
     }
-    const googleSignIn = () => (window.location.href = "https://localhost:4000/auth/google")
+    const googleSignIn = () => (window.location.href = "http://localhost:4000/auth/google")
     return (
         <>
             <Transition appear show={isOpen} as={Fragment}>
