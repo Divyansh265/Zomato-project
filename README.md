@@ -1,3 +1,5 @@
+Zomato clone project Documentation
+https://docs.google.com/document/d/1M5Fw2QKYQE5L6CS5vLzj5mVNmQU8auuMJHcizOyT7OI/edit?usp=sharing
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
